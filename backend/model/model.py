@@ -13,8 +13,7 @@ def createTokens(f):
         tokens.append(i)
     return tokens
 def train_model():
-    print("during")
-    passwordData = pd.read_csv("../datasets/dataset.csv", on_bad_lines='skip')
+    passwordData = pd.read_csv("../../datasets/dataset.csv", on_bad_lines='skip')
 
     passwordData.dropna(inplace=True)
 
@@ -34,12 +33,7 @@ def train_model():
     clf.fit(X_train, y_train)
 
 
-    singlePredict = vectorise.transform(single_predictions)
-    y_Single = clf.predict(singlePredict)
-    print(single_predictions[0], "Has a strength of ", y_Single)
+    # singlePredict = vectorise.transform(single_predictions)
+    # y_Single = clf.predict(singlePredict)
+    # print(single_predictions[0], "Has a strength of ", y_Single)
 
-    single_predictions.pop()
-
-def classify_strength(password):
-    single_predictions.append((password))
-    train_model()

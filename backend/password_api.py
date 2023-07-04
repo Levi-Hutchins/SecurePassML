@@ -1,5 +1,6 @@
 from flask import Flask, jsonify, request
-import test
+from SecurePassML.backend.model import test
+
 app = Flask(__name__)
 
 incomes = [
