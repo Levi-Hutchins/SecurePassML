@@ -22,4 +22,4 @@ class Classifer:
 # Load the trained model
 c = Classifer()
 c.load_model()
-print(c.classify_strength("Iwent2ThePark!"))
+print(c.classify_strength("coolpassword!"))
