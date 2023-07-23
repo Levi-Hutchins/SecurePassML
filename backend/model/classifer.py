@@ -10,7 +10,7 @@ class Classifer:
         self.vectorise = None
 
     def load_model(self):
-        self.vectorise = joblib.load("vectoriser.pkl")
+        self.vectorise = joblib.load("vectorise.pkl")
         self.clf = joblib.load("model.pkl")
 
     def classify_strength(self, password):

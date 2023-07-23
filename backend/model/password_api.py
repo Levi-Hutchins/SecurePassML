@@ -1,5 +1,6 @@
 from flask import Flask, jsonify, request
-from SecurePassML.backend.model import test
+import joblib
+import classifer
 
 app = Flask(__name__)
 
@@ -22,7 +23,10 @@ def add_income():
     #incomes.append(request.get_json())
     passwords.append(request.get_json())
     print("before")
-    classification = test.main(passwords[0]["value"])
+    #classification = test.main(passwords[0]["value"])
+    c.classify_strength(passwords[0]["value"])
     passwords.pop()
     print("after")
     return jsonify("Success"), 204
+
+

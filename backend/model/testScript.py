@@ -70,4 +70,4 @@ def main(password):
 
 # Start the main process
 if __name__ == "__main__":
-    main()
+    c = Cl
