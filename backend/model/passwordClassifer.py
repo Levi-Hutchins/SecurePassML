@@ -1,13 +1,16 @@
 import joblib
+import sys
+
 def createTokens(f):
     tokens = []
     for i in f:
         tokens.append(i)
     return tokens
+# This class allows for fast classification after the training is complete
 class Classifer:
     def __init__(self):
-        self.clf = None
-        self.vectorise = None
+        self.vectorise = joblib.load("./pkl/vectorise.pkl")
+        self.clf = joblib.load("./pkl/model.pkl")
 
     def load_model(self):
         self.vectorise = joblib.load("./pkl/vectorise.pkl")
@@ -19,7 +22,9 @@ class Classifer:
         y_single = self.clf.predict(single_predict)
         return y_single[0]
 
-# Load the trained model
-c = Classifer()
-c.load_model()
-print(c.classify_strength("coolpassword!"))
+
+
+def classifyPassword(password):
+    c = Classifer()
+    c.load_model()
+    return c.classify_strength(password)

@@ -5,6 +5,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.tree import DecisionTreeClassifier
 import queue
 import threading
+import passwordClassifer
 
 # Global variables
 clf = None
@@ -68,6 +69,13 @@ def main(password):
     classification_thread.join()
 
 
-# Start the main process
-if __name__ == "__main__":
-    c = Cl
+def test():
+    print(passwordClassifer.classifyPassword("Reallyhadpassword!!221__0"))
+
+
+
+
+def test2():
+    print(passwordClassifer.classifyPassword("Reallyhadpassword!!221__0"))
+
+test2()
