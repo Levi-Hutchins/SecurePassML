@@ -2,7 +2,11 @@
 # By initialising this file we are able to load the results of the model and make
 # predicitions without having to re-train the model.
 import joblib
+import os
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+VECTORISE_PATH = os.path.join(BASE_DIR, "pkl", "vectorise.pkl")
+MODEL_PATH = os.path.join(BASE_DIR, "pkl","model.pkl")
 class ModelLoader:
     def __init__(self):
         self._vectorise = None
@@ -11,13 +15,13 @@ class ModelLoader:
     @property
     def vectorise(self):
         if self._vectorise is None:
-            self._vectorise = joblib.load("./pkl/vectorise.pkl")
+            self._vectorise = joblib.load(VECTORISE_PATH)
         return self._vectorise
 
     @property
     def clf(self):
         if self._clf is None:
-            self._clf = joblib.load("./pkl/model.pkl")
+            self._clf = joblib.load(MODEL_PATH)
         return self._clf
 
     def classify_strength(self, password):
