@@ -13,6 +13,7 @@ def createTokens(f):
     return tokens
 
 class passwordModel:
+
     def __init__(self):
         self.clf = None
         self.vectorise = None
@@ -33,11 +34,12 @@ class passwordModel:
         self.clf = DecisionTreeClassifier()
         self.clf.fit(X, y_values)
 
-        # Save the trained model for future classifications
+        # Found pkl files for saving a model and use later
+        # without having to re-train
         joblib.dump(self.clf, "./pkl/model.pkl")
         joblib.dump(self.vectorise, "./pkl/vectorise.pkl")
 
-        print("Model training complete.")
+        print("...Training complete...")
 
     def classify_strength(self,password):
 
