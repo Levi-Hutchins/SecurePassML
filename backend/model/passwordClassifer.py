@@ -24,7 +24,10 @@ class Classifer:
 
 
 
-def classifyPassword(password):
-    c = Classifer()
-    c.load_model()
-    return c.classify_strength(password)
+# def classifyPassword(password):
+#     c = Classifer()
+#     c.load_model()
+#     return c.classify_strength(password)
+
+
+# print(classifyPassword("password"))

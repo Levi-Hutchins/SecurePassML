@@ -1,8 +1,13 @@
 from flask import Flask, jsonify, request
-import joblib
 import passwordClassifer
-import ttt
+def createTokens(f):
+    tokens = []
+    for i in f:
+        tokens.append(i)
+    return tokens
 
+c = passwordClassifer.Classifer()
+c.load_model()
 
 app = Flask(__name__)
 
@@ -12,32 +17,26 @@ incomes = [
 passwords = [
 
 ]
-def test1(password):
-    return passwordClassifer.classifyPassword(password)
+
 # GET request
 @app.route('/incomes')
 def get_incomes():
-    return jsonify(passwords)
+    
+    return jsonify(incomes)
 
 
 # POST request
-@app.route('/incomes', methods=['POST'])
-def add_income():
-    def createTokens(f):
-        tokens = []
-        for i in f:
-            tokens.append(i)
-        return tokens
+@app.route('/password_strength', methods=['POST'])
+def passwordStrength():
+    password = request.get_json()["password"]
+    passwordStrength = c.classify_strength(password)
 
-    #incomes.append(request.get_json())
     passwords.append(request.get_json())
     print("before")
-    #classification = test.main(passwords[0]["value"])
-    ttt.inputPassword(passwords[0]["value"])
-    #y = passwordClassifer.classifyPassword(passwords[0]["value"])
+   
     passwords.pop()
     print("after")
-    return jsonify("hello"), 204
+    return jsonify(str(passwordStrength)) , 200
 
-
-
+if __name__ == "__main__":
+    app.run(host='127.0.0.1', port="5000")
