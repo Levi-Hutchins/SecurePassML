@@ -1,3 +1,6 @@
+# This class is used AFTER the model has been trained and dumped to a pkle file.
+# By initialising this file we are able to load the results of the model and make
+# predicitions without having to re-train the model.
 import joblib
 
 class ModelLoader:
