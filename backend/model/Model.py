@@ -5,7 +5,6 @@ import random as r
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.tree import DecisionTreeClassifier
 import joblib
-
 # Tokenizer
 def createTokens(f):
     tokens = []
@@ -18,6 +17,8 @@ class passwordModel:
     def __init__(self):
         self.clf = None
         self.vectorise = None
+    
+
 
     def train_model(self):
 
@@ -58,8 +59,6 @@ class passwordModel:
 
 
 
-p = passwordModel()
-
-p.train_model()
-
-p.classify_strength("Qwerty123")
+if __name__ == "__main__":
+    m = passwordModel()
+    m.train_model()
