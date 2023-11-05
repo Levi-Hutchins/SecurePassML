@@ -1,6 +1,10 @@
 # Flask API
 from flask import Flask, jsonify, request
+import os
+import csv
 from model.ModelLoader import ModelLoader
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DATASET_PATH = os.path.join(BASE_DIR, "../datasets", "dataset.csv")
 
 
 def createTokens(f):
@@ -15,7 +19,10 @@ app = Flask(__name__)
 
 
 @app.route('/add_password', methods=['POST'])
-def passwordToDataset():
+def passwordToDataset(password, passwordStrength):
+    with open(DATASET_PATH, mode='a', newline='') as file:
+        writer = csv.writer(file)
+        writer.writerow([password, passwordStrength])
     return jsonify(request.get_json()["password"])
 
 
@@ -24,6 +31,7 @@ def passwordToDataset():
 def passwordStrength():
     password = request.get_json()["password"]
     passwordStrength = str(model_loader.classify_strength(password))
+    passwordToDataset(password, passwordStrength)
     return jsonify(passwordStrength) , 200
 
 
