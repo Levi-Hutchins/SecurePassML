@@ -15,7 +15,7 @@ class TestModel(unittest.TestCase):
     def setUp(self):
         self.model = ModelLoader()
     def test_low_passwords(self):
-        self.assertEqual(self.model.classify_strength("intel1"), 0)
+        self.assertEqual(self.model.classify_strength("password"), 0)
         self.assertEqual(self.model.classify_strength("olmaz"), 0)
         self.assertEqual(self.model.classify_strength("bgrvl80"), 0)
 
