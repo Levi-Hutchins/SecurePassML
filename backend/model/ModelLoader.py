@@ -24,7 +24,7 @@ class ModelLoader:
             self._clf = joblib.load(MODEL_PATH)
         return self._clf
 
-    def classify_strength(self, password):
+    def classify_strength(self, password) -> int:
         single_prediction = [password]
         single_predict = self.vectorise.transform(single_prediction)
         y_single = self.clf.predict(single_predict)
