@@ -1,12 +1,16 @@
 import { json } from 'node:stream/consumers';
+import { TailSpin } from 'react-loader-spinner';
 import React, { useState } from 'react';
 
-
+function timeout(delay: number) {
+    return new Promise( res => setTimeout(res, delay) );
+}
 
 const InputBox: React.FC = () => {
     const [inputValue, setInputValue] = useState('');
     const [inputPassword, setPassword] = useState('');
     const [passwordStrength, setStrength] = useState('');
+    const [isLoading, setLoading] = useState(false)
     
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -17,7 +21,8 @@ const InputBox: React.FC = () => {
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-       
+        setLoading(true);
+
         try {
             const response = await fetch('http://127.0.0.1:5000/password_strength', {
                 method: 'POST',
@@ -31,7 +36,9 @@ const InputBox: React.FC = () => {
             if (!response.ok) {
                 throw new Error(`Error: ${response.status}`);
             }
+            await timeout(3000);
             const responseData = await response.json();
+            setLoading(false)
             setStrength(responseData);
             console.log('Your Password ',inputPassword,' has a strength of:', responseData);
             // Handle response data
@@ -52,7 +59,20 @@ const InputBox: React.FC = () => {
                     height: '25px',
                     borderRadius: '10px'}}
             />
-            <button type="submit">Submit</button>
+            <button type="submit" style={{ position: 'relative' }}>
+            {isLoading ? (
+                <div style={{ position: 'absolute',
+                left: '50%',
+                top: '50%',
+                transform: 'translate(-50%, -50%)',
+                border: 'none',
+                outline: 'none' }}>
+                    <TailSpin color="#00BFFF" height={40} width={40} />
+                </div>
+            ) : (
+                'Search'
+            )}
+        </button>
         </form>
     );
 };
