@@ -1,5 +1,6 @@
 # Flask API
 from flask import Flask, jsonify, request
+from flask_cors import CORS
 import os
 import csv
 from model.ModelLoader import ModelLoader
@@ -16,7 +17,7 @@ def createTokens(f):
 model_loader = ModelLoader()
 
 app = Flask(__name__)
-
+CORS(app)
 
 @app.route('/add_password', methods=['POST'])
 def passwordToDataset(password, passwordStrength):
