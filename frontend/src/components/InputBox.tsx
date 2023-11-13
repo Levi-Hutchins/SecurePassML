@@ -1,4 +1,3 @@
-import { json } from 'node:stream/consumers';
 import { TailSpin } from 'react-loader-spinner';
 import React, { useState } from 'react';
 
@@ -36,10 +35,13 @@ const InputBox: React.FC = () => {
             if (!response.ok) {
                 throw new Error(`Error: ${response.status}`);
             }
-            await timeout(3000);
+            await timeout(1000);
             const responseData = await response.json();
             setLoading(false)
-            setStrength(responseData);
+            if(responseData === "0") setStrength("Weak")
+            if(responseData === "1") setStrength("Medium")
+            if(responseData === "2") setStrength("Strong")
+
             console.log('Your Password ',inputPassword,' has a strength of:', responseData);
             // Handle response data
         } catch (error) {
@@ -48,6 +50,7 @@ const InputBox: React.FC = () => {
     };
 
     return (
+        <>
         <form onSubmit={handleSubmit}>
             <input
                 type="text"
@@ -70,10 +73,17 @@ const InputBox: React.FC = () => {
                     <TailSpin color="#00BFFF" height={40} width={40} />
                 </div>
             ) : (
-                'Search'
+                "Calculate"
             )}
         </button>
         </form>
+        <div className='score'>
+            { isLoading ? (" "): (
+                "Password Strength: "+ passwordStrength
+                )}
+        </div>
+
+        </>
     );
 };
 
