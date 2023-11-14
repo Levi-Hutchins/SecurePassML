@@ -1,21 +1,22 @@
 import React from 'react';
 import securepass from './securepass.png';
-import InputBox from './components/InputBox'
-import './App.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import Home from './Pages/Home'
+import PasswordResultPage from './Pages/PasswordResults';
+import './Styles/App.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={securepass} className="App-logo" alt="logo" />
-        <p className='info'>
-        
-        </p>      
-        <InputBox/>
-      </header>
-      <div className="AppCore">
-
-      </div>
+      <BrowserRouter>
+      <Routes>
+        <Route path="/">
+          <Route index element={<Home />} />
+          <Route path="/results" element={<PasswordResultPage/>}/>
+        </Route>
+      </Routes>
+    </BrowserRouter>
     </div>
   );
 }
