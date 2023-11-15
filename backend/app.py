@@ -32,7 +32,7 @@ def passwordToDataset(password, passwordStrength):
 def passwordStrength():
     password = request.get_json()["password"]
     passwordStrength = str(model_loader.classify_strength(password))
-    passwordToDataset(password, passwordStrength)
+    #passwordToDataset(password, passwordStrength)
     return jsonify(passwordStrength) , 200
 
 

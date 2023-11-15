@@ -1,11 +1,12 @@
 import { TailSpin } from 'react-loader-spinner';
 import React, { useState } from 'react';
-
+import { useNavigate } from 'react-router-dom';
 function timeout(delay: number) {
     return new Promise( res => setTimeout(res, delay) );
 }
 
 const InputBox: React.FC = () => {
+    const navigate = useNavigate();
     const [inputValue, setInputValue] = useState('');
     const [inputPassword, setPassword] = useState('');
     const [passwordStrength, setStrength] = useState('');
@@ -44,6 +45,8 @@ const InputBox: React.FC = () => {
 
             console.log('Your Password ',inputPassword,' has a strength of:', responseData);
             // Handle response data
+            navigate('/results');
+
         } catch (error) {
             console.error('Error sending password:', error);
         }
