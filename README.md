@@ -17,3 +17,13 @@ Train model and run tests
 python3 SecurePassML/backend/model/Model.py
 python3 SecurePassML/backend/model/tests/test_model.py
 ```
+Run Flask API
+```
+python3 SecurePassML/backend/app.py
+```
+Start npm server and build react frontend
+```
+cd SecurePassML/frontend
+npm start
+```
+
