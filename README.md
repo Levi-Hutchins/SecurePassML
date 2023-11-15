@@ -8,6 +8,12 @@ SecurePassML is a project I have embarked on to express my interest in both secu
 ## How to Install / Run
 Currently whilst under development the only way top run this application is to run locally. This will be rectified once a release has been established and test - which it will then be deployed.
 
+Clone the Repository
 ```
 git clone https://github.com/Levi-Hutchins/SecurePassML.git
+```
+Train model and run tests
+```
+python3 SecurePassML/backend/model/Model.py
+python3 SecurePassML/backend/model/tests/test_model.py
 ```
