@@ -3,18 +3,21 @@ import '../Styles/Results.css';
 import { useLocation } from 'react-router-dom';
 import { useState } from 'react';
 
+
 const Results = () => {
 
     const location = useLocation();
-    const { password, strength } = location.state || {}; // Or handle the case where state might be undefined
-    
+    const { givenPassword, strength } = location.state || {}; 
+    function generateSecurePassword(password: string){
+        
+    }    
 
     return (
     <div className="results-container">
       <div className="panel">
         <h2 className='heading'>Summary</h2>
         <div className="summaryinfo">
-            <p> Your Password: {password}</p>
+            <p> Your Password: {givenPassword}</p>
             <p> Password Strength: {strength}</p>
 
         </div>
