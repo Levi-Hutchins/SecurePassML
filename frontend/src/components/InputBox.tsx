@@ -39,13 +39,14 @@ const InputBox: React.FC = () => {
             await timeout(1000);
             const responseData = await response.json();
             setLoading(false)
-            if(responseData === "0") setStrength("Weak")
-            if(responseData === "1") setStrength("Medium")
-            if(responseData === "2") setStrength("Strong")
-
+            let strengthText = "";
+            if(responseData === "0") strengthText = "Weak";
+            if(responseData === "1") strengthText = "Medium";
+            if(responseData === "2") strengthText = "Strong";
+            
             console.log('Your Password ',inputPassword,' has a strength of:', responseData);
             // Handle response data
-            navigate('/results');
+            navigate('/results', { state: { password: inputPassword, strength: strengthText } });
 
         } catch (error) {
             console.error('Error sending password:', error);
