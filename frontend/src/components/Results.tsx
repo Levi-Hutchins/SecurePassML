@@ -3,11 +3,13 @@ import '../Styles/Results.css';
 import { useLocation } from 'react-router-dom';
 import { useState } from 'react';
 
-const PasswordResults = () => {
+const Results = () => {
+
     const location = useLocation();
     const { password, strength } = location.state || {}; // Or handle the case where state might be undefined
-    console.log("strength",strength);
-  return (
+    
+
+    return (
     <div className="results-container">
       <div className="panel">
         <h2 className='heading'>Summary</h2>
@@ -29,4 +31,4 @@ const PasswordResults = () => {
   );
 };
 
-export default PasswordResults;
+export default Results;

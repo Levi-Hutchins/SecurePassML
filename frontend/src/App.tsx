@@ -12,6 +12,7 @@ function App() {
       <BrowserRouter>
       <Routes>
         <Route path="/">
+          
           <Route index element={<Home />} />
           <Route path="/results" element={<PasswordResultPage/>}/>
         </Route>
