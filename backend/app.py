@@ -3,10 +3,29 @@ from flask import Flask, jsonify, request
 from flask_cors import CORS
 import os
 import csv
+import openai
+import re
+from config.openai_config import OPENAI_API_KEY
 from model.ModelLoader import ModelLoader
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATASET_PATH = os.path.join(BASE_DIR, "../datasets", "dataset.csv")
 
+openai.api_key = OPENAI_API_KEY
+
+def gpt_prompt(password, model="gpt-3.5-turbo"):
+    prompt = f"give me 5 new passwords for this passsword (make it strong): {password}"
+    messages = [{"role": "user", "content": prompt}]
+
+    response = openai.ChatCompletion.create(
+
+    model=model,
+
+    messages=messages,
+
+    temperature=0,
+    )
+
+    return response.choices[0].message["content"]
 
 def createTokens(f):
     tokens = []
@@ -32,9 +51,14 @@ def passwordToDataset(password, passwordStrength):
 def passwordStrength():
     password = request.get_json()["password"]
     passwordStrength = str(model_loader.classify_strength(password))
-    passwordToDataset(password, passwordStrength)
+    #passwordToDataset(password, passwordStrength)
     return jsonify(passwordStrength) , 200
 
+@app.route('/generate_passwords', methods=['GET'])
+def generate_passwords():
+    password = request.get_json()["password"]
+    securePasswords = re.findall(r'\d+\.\s*(.+?)(?=\s\d+\.|\s*$)', gpt_prompt(password))
+    return jsonify(securePasswords) , 200
 
 
 if __name__ == "__main__":

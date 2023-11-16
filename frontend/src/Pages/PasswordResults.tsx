@@ -1,10 +1,10 @@
 import React from 'react';
+import Results from '../Components/Results'
 
 const PasswordResultPage = () => {
   return (
     <div>
-      <h1>Password Strength Result</h1>
-      {/* You can pass the result as a prop or use context/state management to display it here */}
+      <Results/>
     </div>
   );
 };
