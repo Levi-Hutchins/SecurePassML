@@ -55,7 +55,6 @@ class passwordModel:
         single_prediction = [password]
         single_predict = self.vectorise.transform(single_prediction)
         y_single = self.clf.predict(single_predict)
-        print(password, "has a strength of", y_single[0])
 
 
 

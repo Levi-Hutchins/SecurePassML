@@ -44,7 +44,6 @@ const InputBox: React.FC = () => {
             if(responseData === "1") strengthText = "Medium";
             if(responseData === "2") strengthText = "Strong";
             
-            console.log('Your Password ',inputPassword,' has a strength of:', responseData);
             // Handle response data
             navigate('/results', { state: { password: inputPassword, strength: strengthText } });
 
