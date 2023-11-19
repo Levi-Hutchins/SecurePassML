@@ -81,9 +81,7 @@ const InputBox: React.FC = () => {
         </button>
         </form>
         <div className='score'>
-            { isLoading ? (" "): (
-                "Password Strength: "+ passwordStrength
-                )}
+            
         </div>
 
         </>

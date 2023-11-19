@@ -16,7 +16,6 @@ const Results = () => {
   const[suggestions,setSuggestions] = useState([]);
 
 
-
   useEffect(() => {
     setPasswordLength(getPasswordLength(password));
 
@@ -85,7 +84,9 @@ const Results = () => {
       </div>
       <div className="panel">
         <h2 className="heading">Metrics</h2>
-        {/* Content for panel 2 */}
+        <div className="metricsinfo">
+        <p>Your password is {passwordLength} characters long. If you use upper, lower case letters as well as numbers and special characters. There are 94 possible values for any one given character.</p>
+        </div>
       </div>
       <div className="panel">
         <h2 className="heading">Security</h2>

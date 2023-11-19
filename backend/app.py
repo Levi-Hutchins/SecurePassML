@@ -13,7 +13,7 @@ DATASET_PATH = os.path.join(BASE_DIR, "../datasets", "dataset.csv")
 openai.api_key = OPENAI_API_KEY
 
 def gpt_prompt(password, model="gpt-3.5-turbo"):
-    prompt = f"give me 5 new passwords for this passsword (make it strong): {password}"
+    prompt = f"give me 5 new passwords for this passsword (make it at least 13 characters): {password}"
     messages = [{"role": "user", "content": prompt}]
 
     response = openai.ChatCompletion.create(
@@ -54,7 +54,7 @@ def passwordStrength():
     #passwordToDataset(password, passwordStrength)
     return jsonify(passwordStrength) , 200
 
-@app.route('/generate_passwords', methods=['GET'])
+@app.route('/generate_passwords', methods=['POST'])
 def generate_passwords():
     password = request.get_json()["password"]
     securePasswords = re.findall(r'\d+\.\s*(.+?)(?=\s\d+\.|\s*$)', gpt_prompt(password))
