@@ -9,7 +9,8 @@ from config.openai_config import OPENAI_API_KEY
 from model.ModelLoader import ModelLoader
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATASET_PATH = os.path.join(BASE_DIR, "../datasets", "dataset.csv")
-
+ROCKYOU_PATH = os.path.join(BASE_DIR, "../datasets", "rockyou.txt")
+TENMILL_PATH = os.path.join(BASE_DIR, "../datasets", "10-million-password.txt")
 openai.api_key = OPENAI_API_KEY
 
 def gpt_prompt(password, model="gpt-3.5-turbo"):
@@ -60,6 +61,17 @@ def generate_passwords():
     securePasswords = re.findall(r'\d+\.\s*(.+?)(?=\s\d+\.|\s*$)', gpt_prompt(password))
     return jsonify(securePasswords) , 200
 
+@app.route('/check_rockyou', methods=['POST'])
+def check_rockyou():
+    password = request.get_json()["password"]
+    with open(ROCKYOU_PATH, 'r', encoding='iso-8859-1') as file:
+        return jsonify(password in file.read())
+    
 
+@app.route('/check_10mill', methods=['POST'])
+def check_10mill():
+    password = request.get_json()["password"]
+    with open(TENMILL_PATH, 'r', encoding='iso-8859-1') as file:
+        return jsonify(password in file.read())
 if __name__ == "__main__":
     app.run(host='127.0.0.1', port="5000")
