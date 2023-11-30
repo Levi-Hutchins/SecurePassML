@@ -24,7 +24,7 @@
     background-color: #1c1c28;
     margin: 10px;
     height: 35vh;
-    margin-top: 150px;
+    margin-top: 100px;
     margin-left: -10px;
   }
   .spinner-container {
@@ -59,7 +59,7 @@
     color: red;
     font-size: 1.2em;
   }
-  .rockyou{
+  .db-info{
     text-align: left;
     color: #e7e7e7
   }
