@@ -1,5 +1,5 @@
 import React from 'react';
-import Results from '../Components/Results'
+import Results from '../components/Results'
 
 const PasswordResultPage = () => {
   return (

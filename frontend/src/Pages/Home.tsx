@@ -1,6 +1,6 @@
 import React from "react";
 import securepass from "../securepass.png";
-import InputBox from "../Components/InputBox";
+import InputBox from "../components/InputBox";
 import "../Styles/App.css";
 const Home = () => {
   return (
