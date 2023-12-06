@@ -30,5 +30,28 @@
 .App{
   background-color: #d5deee;
 }
+.frontpage-info {
+  display: flex;
+  font-size: 22px; /* Adjust as needed */
+  padding-top: 30px;
+  padding-bottom: 30px;
+  width: 50%;
+  color: #e7e7e7;
+  display: block; /* or 'inline-block' if the structure requires it */
 
+}
+
+ .frontpage-info a {
+    color: #0b67c9; /* Link color */
+    text-decoration: none; /* Optional: removes underline */
+    display: inline;
+
+  }
+
+.frontpage-info a:hover {
+  text-decoration: underline; /* Optional: underline on hover for better UX */
+}
+a{
+  display: inline;
+}
 
