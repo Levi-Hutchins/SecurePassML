@@ -50,6 +50,7 @@ def passwordToDataset(password, passwordStrength):
 # POST request
 @app.route('/password_strength', methods=['POST'])
 def passwordStrength():
+    print("Request from: ", request.remote_addr)
     password = request.get_json()["password"]
     passwordStrength = str(model_loader.classify_strength(password))
     #passwordToDataset(password, passwordStrength)

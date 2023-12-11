@@ -11,10 +11,9 @@ const Home = () => {
           Welcome to SecurePassML ! Created by Levi Hutchins this machine
           learning based web application is intended to give insight into the
           safety of your passwords. Simply enter your password and view the
-          metrics and information that is generated from your password.
+          metrics and information that is generated.
           This is an open-source project so please feel free to contribute{" "}
           <a href="https://github.com/Levi-Hutchins/SecurePassML" target="_blank" rel="noopener noreferrer">here</a>.
-
         </div>
 
         <InputBox />

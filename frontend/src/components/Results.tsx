@@ -67,6 +67,7 @@ const Results = () => {
         const checkRockYouData = await checkRockYouResponse.json();
         const check10MillData = await check10MillRepsonse.json()
         setSuggestions(generateData);
+        console.log(suggestions);
         setInRockYou(checkRockYouData); 
         setInTenMill(check10MillData);
 
@@ -120,12 +121,15 @@ const Results = () => {
         <h2 className="heading">Metrics</h2>
         <div className="metricsinfo">
           <p>
-            Your password is {passwordLength} characters long and you use {findPasswordChars(password)}/4 different characters.
+            Your password is {passwordLength} characters long and you use {findPasswordChars(password)}/4 of the different characters.
           </p>
           <p>Number of combinations:</p>
           <p>{Math.pow(findPasswordComplexity(password),passwordLength)}</p>
           <p>Time taken to bute force:</p>
           <p>{((Math.pow(94,passwordLength)/ 100000000) / 60).toFixed(2)} mins</p>
+          <br/>
+          More Features Comming..
+
         </div>
       </div>
       <div className="panel">
@@ -171,7 +175,7 @@ const Results = () => {
               </div>
             ) : (
               <div className="db-info" style={{paddingTop: '10px'}}>
-                Password not found within 10-million-password.txt
+                Password not found within 10-million-password.txt<br/>
                 <FontAwesomeIcon
                   icon={faCircleCheck}
                   color="green"
@@ -180,10 +184,13 @@ const Results = () => {
                 />
               </div>
             )}
+            <br/>
+            <div className="db-info">Note: If your password is found within any of this files, your password is not secure.<br/><br/>More Features Comming..</div>
           </div>
           
         )}
       </div>
+
     </div>
   );
 };

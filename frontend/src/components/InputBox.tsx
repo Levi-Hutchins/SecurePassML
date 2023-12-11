@@ -1,15 +1,12 @@
 import { TailSpin } from "react-loader-spinner";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-function timeout(delay: number) {
-  return new Promise((res) => setTimeout(res, delay));
-}
+
 
 const InputBox: React.FC = () => {
   const navigate = useNavigate();
   const [inputValue, setInputValue] = useState("");
   const [inputPassword, setPassword] = useState("");
-  const [passwordStrength, setStrength] = useState("");
   const [isLoading, setLoading] = useState(false);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -25,7 +22,7 @@ const InputBox: React.FC = () => {
       const response = await fetch("http://127.0.0.1:5000/password_strength", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json", // Specify the content type
+          "Content-Type": "application/json", 
         },
         mode: "cors",
         body: JSON.stringify({ password: inputPassword }),
@@ -34,7 +31,6 @@ const InputBox: React.FC = () => {
       if (!response.ok) {
         throw new Error(`Error: ${response.status}`);
       }
-      await timeout(1000);
       const responseData = await response.json();
       setLoading(false);
       let strengthText = "";
