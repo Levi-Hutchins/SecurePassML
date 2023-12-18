@@ -30,7 +30,7 @@ const Results = () => {
     setCheckLoading(true);
     console.log("Complexity: ",findPasswordComplexity(password));
     const fetchGeneratePasswords = fetch(
-      "http://127.0.0.1:5000/generate_passwords",
+      "http://127.0.0.1:8000/generate_passwords",
       {
         method: "POST",
         headers: {
@@ -41,7 +41,7 @@ const Results = () => {
       }
     );
 
-    const fetchCheckRockYou = fetch("http://127.0.0.1:5000/check_rockyou", {
+    const fetchCheckRockYou = fetch("http://127.0.0.1:8000/check_rockyou", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -49,7 +49,7 @@ const Results = () => {
       mode: "cors",
       body: JSON.stringify({ password: password }),
     });
-    const fetchCheck10Mill = fetch("http://127.0.0.1:5000/check_10mill", {
+    const fetchCheck10Mill = fetch("http://127.0.0.1:8000/check_10mill", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -153,7 +153,7 @@ const Results = () => {
               </div>
             ) : (
               <div className="db-info">
-                Password was not found within rockyou.txt
+                Password not found within rockyou.txt
                 <FontAwesomeIcon
                   icon={faCircleCheck}
                   color="green"
@@ -175,7 +175,7 @@ const Results = () => {
               </div>
             ) : (
               <div className="db-info" style={{paddingTop: '10px'}}>
-                Password not found within 10-million-password.txt<br/>
+              Password not found within 10-million-password.txt
                 <FontAwesomeIcon
                   icon={faCircleCheck}
                   color="green"
