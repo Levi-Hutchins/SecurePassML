@@ -4,6 +4,8 @@ import { Alert, AlertTitle } from "@mui/material";
 import { MetricsInfoProps } from "./Types";
 import { findPasswordComplexity } from "../utils";
 import { findPasswordChars } from "../utils";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
 
 const MetricsInfo: React.FC<MetricsInfoProps> = ({
   password,
@@ -27,9 +29,9 @@ const MetricsInfo: React.FC<MetricsInfoProps> = ({
         </p>
         <p>Number of combinations:</p>
         <p>{Math.pow(findPasswordComplexity(password), passwordLength)}</p>
-        <p>Time taken to bute force:</p>
+        <p>Estimate time to crack:</p>
         <p>{(Math.pow(94, passwordLength) / 100000000 / 60).toFixed(2)} mins</p>
-        <h4 style={{ paddingTop: "" }}>Password Entropy</h4>
+        <h4 style={{ paddingTop: "" }}><FontAwesomeIcon icon={faCircleInfo} /> Password Entropy</h4>
         <p>
           Password entropy is a measure of the randomness and unpredictability
           of a password, expressed in bits. The higher the entropy, the more
