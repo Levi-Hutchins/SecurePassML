@@ -6,11 +6,9 @@ import csv
 import openai
 import re
 from config.openai_config import OPENAI_API_KEY
+from config.paths_config import DATASET_PATH,ROCKYOU_PATH,TENMILL_PATH
 from ModelLoader import ModelLoader
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-DATASET_PATH = os.path.join(BASE_DIR, "../datasets", "dataset.csv")
-ROCKYOU_PATH = os.path.join(BASE_DIR, "../datasets", "rockyou.txt")
-TENMILL_PATH = os.path.join(BASE_DIR, "../datasets", "10-million-password.txt")
+
 openai.api_key = OPENAI_API_KEY
 
 def gpt_prompt(password, model="gpt-3.5-turbo"):

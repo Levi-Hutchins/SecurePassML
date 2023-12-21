@@ -8,13 +8,14 @@ export function findPasswordChars(password: string): number {
     return count;
   }
 
+
 export function getPasswordLength(str: string): number {
     return str.length;
 };
 export function findPasswordComplexity(password: string): number {
     var power = 0;
     const specialCharRegex = /[!@#$%^&*()_+\-=~\[\]{};':"\\|,.<>\/?]+/;
-    if (specialCharRegex.test(password)) power += 30;
+    if (specialCharRegex.test(password)) power += 32;
     if (password !== password.toUpperCase()) power+= 26;
     if (password !== password.toLowerCase()) power+= 26;
     if(/\d/.test(password))  power+=10;
