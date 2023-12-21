@@ -6,6 +6,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split, GridSearchCV
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix
 import joblib
+from config.paths_config import DATASET_PATH, VECTORISE_PATH, MODEL_PATH
 from utils import createTokens
 
 
@@ -17,7 +18,7 @@ class passwordModel:
     def train_model(self):
         print("Training the model...")
         # Clean up data and prepare for training
-        passwordData = pd.read_csv("../../datasets/dataset.csv", on_bad_lines='skip')
+        passwordData = pd.read_csv(DATASET_PATH, on_bad_lines='skip')
         passwordData.dropna(inplace=True)
         passwordData = np.array(passwordData)
         r.shuffle(passwordData)
@@ -48,8 +49,8 @@ class passwordModel:
         print("\n--------------------------------------")
         
         # Save the model and vectorizer
-        joblib.dump(self.clf, "./pkl/model.pkl")
-        joblib.dump(self.vectorise, "./pkl/vectorise.pkl")
+        joblib.dump(self.clf, MODEL_PATH)
+        joblib.dump(self.vectorise, VECTORISE_PATH)
         print("...Training complete...")
 
 

@@ -24,7 +24,6 @@ const Results = () => {
     setPasswordLength(getPasswordLength(password));
     setGenerateLoading(true);
     setCheckLoading(true);
-    console.log("Complexity: ",findPasswordComplexity(password));
     const fetchGeneratePasswords = fetch(
       "http://127.0.0.1:8000/generate_passwords",
       {
@@ -63,7 +62,6 @@ const Results = () => {
         const checkRockYouData = await checkRockYouResponse.json();
         const check10MillData = await check10MillRepsonse.json()
         setSuggestions(generateData);
-        console.log(suggestions);
         setInRockYou(checkRockYouData); 
         setInTenMill(check10MillData);
 

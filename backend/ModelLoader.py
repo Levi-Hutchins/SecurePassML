@@ -2,11 +2,7 @@
 # By initialising this file we are able to load the results of the model and make
 # predicitions without having to re-train the model.
 import joblib
-import os
-
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-VECTORISE_PATH = os.path.join(BASE_DIR, "./pkl", "vectorise.pkl")
-MODEL_PATH = os.path.join(BASE_DIR, "./pkl","model.pkl")
+from config.paths_config import VECTORISE_PATH, MODEL_PATH
 
 class ModelLoader:
     def __init__(self):
