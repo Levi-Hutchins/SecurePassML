@@ -44,7 +44,7 @@ def passwordToDataset(password, passwordStrength):
 # POST request
 @app.route('/password_strength', methods=['POST'])
 def passwordStrength():
-   
+        
     print("Request from: ", request.remote_addr)
     password = request.get_json()["password"]
     passwordStrength = str(model_loader.classify_strength(password))
@@ -69,3 +69,5 @@ def check_10mill():
     password = request.get_json()["password"]
     with open(TENMILL_PATH, 'r', encoding='iso-8859-1') as file:
         return jsonify(password in file.read())
+
+
