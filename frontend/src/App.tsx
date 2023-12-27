@@ -1,7 +1,5 @@
 import React from 'react';
-import securepass from './securepass.png';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
 import Home from './Pages/Home'
 import PasswordResultPage from './Pages/PasswordResults';
 import './Styles/App.css';

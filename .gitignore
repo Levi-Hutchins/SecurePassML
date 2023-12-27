@@ -1,2 +1,7 @@
 # Local Netlify folder
 .netlify
+backend/config/openai_config.py
+backend/config/__pycache__/openai_config.cpython-311.pyc
+backend/datasets/rockyou.txt
+datasets/rockyou.txt
+backend/config/paths_config.py
