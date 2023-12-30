@@ -25,7 +25,7 @@ const Results = () => {
     setGenerateLoading(true);
     setCheckLoading(true);
     const fetchGeneratePasswords = fetch(
-      "http://127.0.0.1:8000/generate_passwords",
+      "http://3.27.144.145/generate_passwords",
       {
         method: "POST",
         headers: {
@@ -36,7 +36,7 @@ const Results = () => {
       }
     );
 
-    const fetchCheckRockYou = fetch("http://127.0.0.1:8000/check_rockyou", {
+    const fetchCheckRockYou = fetch("http://3.27.144.145/check_rockyou", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -44,7 +44,7 @@ const Results = () => {
       mode: "cors",
       body: JSON.stringify({ password: password }),
     });
-    const fetchCheck10Mill = fetch("http://127.0.0.1:8000/check_10mill", {
+    const fetchCheck10Mill = fetch("http://3.27.144.145/check_10mill", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
