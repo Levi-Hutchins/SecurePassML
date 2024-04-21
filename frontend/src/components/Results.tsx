@@ -25,7 +25,7 @@ const Results = () => {
     setGenerateLoading(true);
     setCheckLoading(true);
     const fetchGeneratePasswords = fetch(
-      "https://securepassml.xyz/generate_passwords",
+      "https://securepass-api-84ry.onrender.com/generate_passwords",
       {
         method: "POST",
         headers: {
@@ -36,7 +36,7 @@ const Results = () => {
       }
     );
 
-    const fetchCheckRockYou = fetch("https://securepassml.xyz/check_rockyou", {
+    const fetchCheckRockYou = fetch("https://securepass-api-84ry.onrender.com/check_rockyou", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -44,7 +44,7 @@ const Results = () => {
       mode: "cors",
       body: JSON.stringify({ password: password }),
     });
-    const fetchCheck10Mill = fetch("https://securepassml.xyz/check_10mill", {
+    const fetchCheck10Mill = fetch("https://securepass-api-84ry.onrender.com/check_10mill", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
