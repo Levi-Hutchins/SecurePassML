@@ -19,7 +19,7 @@ const InputBox: React.FC = () => {
     setLoading(true);
 
     try {
-      const response = await fetch("https://securepassml.xyz/password_strength", 
+      const response = await fetch("https://securepass-api-84ry.onrender.com/password_strength", 
       {
         method: "POST",
         headers: {
